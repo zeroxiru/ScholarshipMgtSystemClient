@@ -1,0 +1,123 @@
+[
+    {
+      "id": 1,
+      "title": "Agriculture & Forestry",
+      "sub-title": "Everything you need to know about studying a master's in Agriculture & Forestry",
+      "description": "Agriculture and Forestry is a vital scientific field that focuses on studying plants, animals, and the environments in which they thrive. You'll learn about forest restoration, managing natural resources, food production, and preserving the natural beauty that surrounds us. Agriculture and Forestry also studies crop rotation and preserving the soil’s mineral qualities.",
+      "icon": "🌳"
+      
+    },
+    {
+      "id": 2,
+      "title": "Applied Sciences & Professions",
+      "sub-title": "Applied Sciences & Professions Overview",
+      "description": "Applied sciences focus on practical applications of scientific knowledge, including engineering, healthcare, and environmental studies. Professionals in this field use scientific principles to solve real-world problems.",
+      "icon": "🔬"
+     
+    },
+    {
+      "id": 3,
+      "title": "Arts, Design & Architecture",
+      "sub-title": "Discover the World of Creativity",
+      "description": "This discipline explores the artistic and functional aspects of design and architecture, helping students develop creative skills in visual arts, urban planning, and architectural design.",
+      "icon": "✨"
+      
+    },
+    {
+      "id": 4,
+      "title": "Business & Management",
+      "sub-title": "Mastering Business & Management",
+      "description": "Business and management studies prepare students for leadership roles in industries, covering topics like marketing, finance, entrepreneurship, and organizational behavior.",
+      "icon": "💼"
+      
+    },
+    {
+      "id": 5,
+      "title": "Computer Science & IT",
+      "sub-title": "Exploring the Digital World",
+      "description": "Computer Science & IT cover programming, software development, cybersecurity, and data science, helping students become tech leaders in the digital era.",
+      "icon": ">-"
+      
+    },
+    {
+      "id": 6,
+      "title": "Education & Training",
+      "sub-title": "Shaping Future Generations",
+      "description": "Education and training programs focus on teaching methodologies, curriculum development, and educational psychology to train future educators.",
+      "icon": "📖"
+      
+    },
+    {
+      "id": 7,
+      "title": "Engineering & Technology",
+      "sub-title": "Innovating the Future",
+      "description": "Engineering and technology involve designing, developing, and improving infrastructure, systems, and technologies for a better world.",
+      "icon": "🛠️"
+     
+    },
+    {
+      "id": 8,
+      "title": "Environmental Studies & Earth Sciences",
+      "sub-title": "Understanding and Protecting the Earth",
+      "description": "This field examines ecosystems, climate change, and sustainability, equipping students with skills to protect and manage natural resources.",
+      "icon": "🌎"
+      
+    },
+    {
+      "id": 9,
+      "title": "Hospitality, Leisure & Sports",
+      "sub-title": "Excelling in Hospitality and Sports Management",
+      "description": "Hospitality and sports management focus on tourism, event planning, and athletic performance, preparing students for careers in the service and sports industries.",
+      "icon": "⛵"
+    
+    },
+    {
+      "id": 10,
+      "title": "Humanities",
+      "sub-title": "Understanding Human Culture",
+      "description": "The humanities explore history, literature, philosophy, and the arts, fostering critical thinking and cultural awareness.",
+      "icon": "🖋️"
+      
+    },
+    {
+      "id": 11,
+      "title": "Journalism & Media",
+      "sub-title": "Mastering Communication & Media",
+      "description": "This field covers journalism, broadcasting, and digital media, equipping students with skills to inform and engage audiences.",
+      "icon": "🎥"
+      
+    },
+    {
+      "id": 12,
+      "title": "Law",
+      "sub-title": "Understanding Justice and Legal Systems",
+      "description": "Law studies focus on legal systems, ethics, and international law, preparing students for careers in advocacy, corporate law, and public service.",
+      "icon": "⚖️"
+      
+    },
+    {
+      "id": 13,
+      "title": "Medicine & Health",
+      "sub-title": "Advancing Medical Knowledge",
+      "description": "Medicine & Health studies cover medical sciences, patient care, and public health, helping students become healthcare professionals.",
+      "icon": "🏥"
+     
+    },
+    {
+      "id": 14,
+      "title": "Natural Sciences & Mathematics",
+      "sub-title": "Exploring Science and Mathematics",
+      "description": "This field includes physics, chemistry, biology, and mathematics, providing a foundation for research and technological advancements.",
+      "icon": "🧪"
+      
+    },
+    {
+      "id": 15,
+      "title": "Social Sciences",
+      "sub-title": "Understanding Society and Human Behavior",
+      "description": "Social sciences analyze human behavior, political systems, and economies, preparing students for careers in government, business, and research.",
+      "icon": "💬"
+      
+    }
+  ]
+  
