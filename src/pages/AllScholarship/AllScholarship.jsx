@@ -43,7 +43,7 @@ const AllScholarship = () => {
 
     return (
         <div className="text-center py-10">
-            <h2 className="text-blue-900 font-bold text-4xl mb-6">All Scholarship Section</h2>
+            <h2 className="text-gray-600 font-bold text-4xl mb-6">All Scholarship Section</h2>
             <div className='w-11/12 mx-auto bg-base-200'>
                 <div className="flex justify-center px-4">
                     <div className="flex items-center gap-3">
@@ -76,7 +76,7 @@ const AllScholarship = () => {
                           scholarshipType: e.target.value,
                         });
                       }} // Update scholarshipType on selection
-                    className="select select-bordered w-full max-w-xs"
+                    className="select select-bordered w-full max-w-xs text-gray-800"
                 >
                     <option value="">All Scholarship Types</option>
                     <option value="Full fund">Full Fund</option>
@@ -86,7 +86,7 @@ const AllScholarship = () => {
             </div>
             <Container>
                 {scholarships && scholarships.length > 0 ? (
-                    <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+                    <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-8">
                         {scholarships.map((scholarship) => (
                             <Card key={scholarship._id} scholarship={scholarship} />
                         ))}

@@ -16,7 +16,7 @@ const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <div className='max-w-screen-2xl mx-auto'>
+    <div >
       <AuthProvider>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>

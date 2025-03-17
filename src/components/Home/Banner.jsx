@@ -10,8 +10,8 @@ import img_5 from '../../../src/assets/images/banner_5.png'
 
 const Banner = () => {
     return (
-        <Carousel>
-            <div>
+        <Carousel >
+            <div >
                 <img src={img_1}></img>
                 {/* <p className="legend"></p> */}
             </div>

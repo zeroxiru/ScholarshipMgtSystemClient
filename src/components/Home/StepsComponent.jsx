@@ -33,7 +33,7 @@ const StepsComponent = () => {
   ];
 
   return (
-    <div className="bg-base-100 py-10">
+    <div className="bg-base-100 py-10 mt-5">
       <div className="container mx-auto px-4">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
@@ -48,8 +48,8 @@ const StepsComponent = () => {
                   className="w-10 h-10 object-contain"
                 />
               </div>
-              <h3 className="text-xl font-bold">{step.title}</h3>
-              <p className="text-gray-500">{step.description}</p>
+              <h3 className="text-xl font-bold  text-gray-700">{step.title}</h3>
+              <p className="text-gray-600">{step.description}</p>
               
             </div>
           ))}

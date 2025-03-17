@@ -5,6 +5,7 @@ import  Container  from '../Container'
  import avatarImg from '../../../assets/images/placeholder.jpg'
 import logo from '../../../assets/images/logo-flat.png'
 import {  AiOutlineMenu } from 'react-icons/ai'
+import { ModeToggle } from '../../../components/mode-toggle';
 
 const Navbar = () => {
   // const auth = useAuth(); // Get the auth object
@@ -14,15 +15,21 @@ const Navbar = () => {
   
   const [isOpen, setIsOpen] = useState(false)
     return (
-      <div className='fixed w-full bg-white z-10 shadow-sm '>
+      <div className='sticky top-0 z-30 w-full bg-white  shadow-md '>
       <div className='py-4 border-b-[1px]'>
         <Container>
           <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
             {/* Logo */}
-            <Link to='/'>
-              <img src={logo}  alt='logo' width='100' height='100' />
+         <div className='flex mr-8 lg:px-20 space-x-6 items-center'>
+         <Link to='/'>
+              <img src={logo}  alt='logo' width='70' height='70' />
             </Link>
+             <div>
+              
+             <ModeToggle/> 
+             </div>
 
+         </div>
                   {/* Navigation Links */}
                   <div className='hidden md:flex flex-row items-center gap-4'>
               <Link to='/' className='text-gray-700 hover:text-gray-900'>

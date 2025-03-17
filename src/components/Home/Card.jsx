@@ -17,20 +17,20 @@ const Card = ({scholarship}) => {
           alt={`${universityName} Image`}
         />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title text-xl font-semibold">{universityName}</h2>
-        <p className="text-sm text-gray-500">{scholarshipCategory}</p>
-        <p className="text-sm text-gray-500">{subjectCategory}</p>
-        <p className="text-sm text-gray-500">
-          {universityCity}, {universityCountry}
+      <div className="card-body justify-start">
+        <h2 className="card-title text-xl font-semibold text-gray-800">{universityName}</h2>
+        <p className="text-sm text-gray-600 text-left">Scholarship Type: {scholarshipCategory}</p>
+        <p className="text-sm text-gray-600 text-left">Subject: {subjectCategory}</p>
+        <p className="text-sm text-gray-600 text-left">
+         Location: {universityCity}, {universityCountry}
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-600 text-left">
           Application Deadline: {applicationDeadline}
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-600 text-left">
           Application Fees: ${applicationFees}
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 text-left">
           Post Date: {new Date(postDate).toLocaleDateString()}
         </p>
       
