@@ -21,6 +21,8 @@ import MyReviews from "../pages/Dashboard/Student/MyReviews";
 import ModeratorRoute from "./ModeratorRoute";
 import ManageScholarship from "../pages/Dashboard/Moderator/ManageScholarship";
 import AllReviewsByModerator from "../pages/Dashboard/Moderator/AllReviewsByModerator";
+import Statistics from "../pages/Dashboard/Common/Statistics";
+import AllAppliedScholarship from "../pages/Dashboard/Moderator/AllAppliedScholarship";
 
 export const router = createBrowserRouter([
   {
@@ -59,11 +61,21 @@ export const router = createBrowserRouter([
      </PrivateRoute>
     ),
     children: [
+      { 
+        index: true,
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+            <Statistics></Statistics>
+            </AdminRoute>
+          </PrivateRoute>
+        )
+      },
       {
         path: 'add-scholarship',
         element: ( 
           <PrivateRoute>
-            <AddScholarship></AddScholarship>
+            <ModeratorRoute><AddScholarship></AddScholarship></ModeratorRoute>
           </PrivateRoute>
         ),
       },
@@ -113,7 +125,7 @@ export const router = createBrowserRouter([
 
       },
       { 
-        path: 'manage-scholarships',
+        path: 'manage-scholarships',   
         element: (
           <PrivateRoute>
             <ModeratorRoute>
@@ -121,6 +133,15 @@ export const router = createBrowserRouter([
             </ModeratorRoute>
           </PrivateRoute>
         )
+      },
+      { 
+        path: 'all-applied-scholarships',  
+         element:( <PrivateRoute>
+            <ModeratorRoute>
+            <AllAppliedScholarship></AllAppliedScholarship>
+            </ModeratorRoute>
+          </PrivateRoute>
+         )
       },
       
       { 
@@ -133,6 +154,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         )
       },
+      
     ]
   }
 
