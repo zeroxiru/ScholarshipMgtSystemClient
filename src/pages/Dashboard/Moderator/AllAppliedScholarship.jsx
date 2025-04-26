@@ -31,7 +31,7 @@ const AllAppliedScholarship = () => {
           <thead>
             <tr className="bg-gray-200 text-xs md:text-base">
               <th className="border p-2">University Name</th>
-              {/* <th className="border p-2">Degree</th> */}
+               <th className="border p-2">Degree</th> 
               <th className="border p-2">Scholarship Category</th>
               <th className="border p-2">Subject Category</th>
               <th className="border p-2">Date</th>

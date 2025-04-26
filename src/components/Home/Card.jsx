@@ -17,7 +17,7 @@ const Card = ({scholarship}) => {
           alt={`${universityName} Image`}
         />
       </figure>
-      <div className="card-body justify-start">
+      <div className="card-body justify-start dark: bg-white">
         <h2 className="card-title text-xl font-semibold text-gray-800">{universityName}</h2>
         <p className="text-sm text-gray-600 text-left">Scholarship Type: {scholarshipCategory}</p>
         <p className="text-sm text-gray-600 text-left">Subject: {subjectCategory}</p>
@@ -35,7 +35,7 @@ const Card = ({scholarship}) => {
         </p>
       
         <div className="card-actions justify-end">
-          <Link to={`/scholarship/${_id}`} className="btn bg-slate-500">
+          <Link to={`/scholarship/${_id}`} className="btn bg-[#f6795d] hover:bg-orange-500 text-white">
             Scholarship Details
           </Link>
         </div>

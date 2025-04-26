@@ -70,6 +70,27 @@ const Login = () => {
             Sign in to access your account
           </p>
         </div>
+        <div className='flex justify-between mb-4'>
+          <button 
+          type="button"
+          onClick={ () => { 
+            document.getElementById('email').value = 'admin@gmail.com';
+            document.getElementById('password').value = 'Asd@123';
+          }}
+          className='bg-slate-500 hover:bg-slate-500 text-white px-4 py-1 rounded'>
+          Admin
+          </button>
+          <button 
+          type="button"
+          onClick={ () => { 
+            document.getElementById('email').value = 'moderator@gmail.com';
+            document.getElementById('password').value = 'Asd@123';
+          }}
+          className='bg-slate-500 hover:bg-slate-500 text-white px-4 py-1 rounded'>
+          Moderator
+          </button>
+
+        </div>
         <form
           onSubmit={handleSubmit}
           noValidate=''
@@ -111,7 +132,7 @@ const Login = () => {
               <label className="label">
                 <LoadCanvasTemplate />
               </label>
-              <input type="text" name="Captcha" ref={captchaRef} placeholder="type the text above " className="input input-bordered" required />
+              <input type="text" name="Captcha" ref={captchaRef} placeholder="type the text above " className="input input-bordered dark: bg-white" required />
               <button onClick={handleValidateCaptcha} className='btn btn-outline btn-xs mt-2'>Validate</button>
 
             </div>
@@ -121,10 +142,10 @@ const Login = () => {
             <button
             disabled={disabled} 
               type='submit'
-              className='bg-slate-500 w-full rounded-md py-3 text-white'
+              className=' bg-slate-500 hover:bg-slate-500 w-full rounded-md py-3 text-white '
             >
               {loading ? (
-                <TbFidgetSpinner className='animate-spin m-auto' />
+                <TbFidgetSpinner className='animate-spin m-auto ' />
               ) : (
                 'Continue'
               )}

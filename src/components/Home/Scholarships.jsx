@@ -34,7 +34,7 @@ const Scholarships = () => {
                 <p>No data Available in the Database</p>
             }
             </Container>
-            <Link to='/all-scholarships'>   <button className="btn bg-gray-500 mt-5 text-white justify-center">See all Scholarships</button></Link>
+            <Link to='/all-scholarships'>   <button className="btn bg-slate-500 mt-5  justify-center">See all Scholarships</button></Link>
         </div>
     );
 };

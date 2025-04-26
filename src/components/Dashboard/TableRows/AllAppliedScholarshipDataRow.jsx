@@ -3,10 +3,11 @@ import Swal from "sweetalert2";
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
 
 const AllAppliedScholarshipDataRow = ({ scholarship, onUpdateStatus }) => {
-  const { universityName,scholarshipCategory, subjectCategory, date, status,id } = scholarship;
+  const { universityName, degree, scholarshipCategory, subjectCategory, date, status,id } = scholarship;
  const [isDetailsOpen, setIsDetailOpen] = useState(false);
  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
  const [feedback, setFeedback] = useState("");
+
  const handleFeedbackSubmit = () =>{ 
     if (!feedback) return;
     onUpdateStatus(id, {feedback, status})
@@ -60,6 +61,7 @@ else{
   return (
     <tr className="border text-xs md:text-base">
       <td className="border p-2">{universityName}</td>
+      <td className="border p-2">{degree}</td>
       <td className="border p-2">{scholarshipCategory}</td>
       <td className="border p-2">{subjectCategory}</td>
       <td className="border p-2">{date}</td>
@@ -68,6 +70,7 @@ else{
         <button
           className="bg-blue-500 text-white px-2 py-1 md:px-3 md:py-1 rounded"
           onClick={() => setIsDetailOpen(true)}
+          
         >
          Details
         </button>
@@ -86,13 +89,13 @@ else{
         {isDetailsOpen && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center p-4">
           <div className="bg-white p-5 rounded shadow-lg w-11/12 md:w-1/3">
-            <h3 className="text-lg font-bold mb-2">Application Details</h3>
+            <h3 className="text-lg font-bold mb-2 text-center">Application Details</h3>
             <p><strong>University:</strong> {universityName}</p>
             <p><strong>Degree:</strong> {degree}</p>
             <p><strong>Scholarship Category:</strong> {scholarshipCategory}</p>
             <button
               className="mt-3 bg-gray-500 text-white px-3 py-1 rounded w-full"
-              onClick={() => setIsDetailsOpen(false)}
+              onClick={() => setIsDetailOpen(false)}
             >
               Close
             </button>
@@ -106,7 +109,7 @@ else{
           <div className="bg-white p-5 rounded shadow-lg w-11/12 md:w-1/3">
             <h3 className="text-lg font-bold mb-2">Provide Feedback</h3>
             <textarea
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded dark: bg-white"
               rows="4"
               placeholder="Enter your feedback here..."
               value={feedback}

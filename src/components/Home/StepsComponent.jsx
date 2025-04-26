@@ -33,13 +33,13 @@ const StepsComponent = () => {
   ];
 
   return (
-    <div className="bg-base-100 py-10 mt-5">
-      <div className="container mx-auto px-4">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <div className=" py-10 mt-5 dark: bg-gray-100">
+      <div className="container mx-auto px-4 ">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 ">
           {steps.map((step, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center space-y-4"
+              className="flex flex-col items-center text-center space-y-4 "
             >
               <div className="w-28 h-28 flex items-center justify-center border-2 border-primary rounded-full">
                 <img

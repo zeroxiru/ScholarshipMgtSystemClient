@@ -3,17 +3,18 @@ import { TbFidgetSpinner } from 'react-icons/tb';
 import PropTypes from 'prop-types';
 
 const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors }) => {
+
     return (
         <div>
-            <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
-                <h2 className="text-2xl font-semibold mb-6">Add Scholarship</h2>
-                <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="max-w-4xl mx-auto p-6 bg-gray-200 dark: text-black shadow-md rounded-md">
+                <h2 className="text-2xl font-semibold mb-6 text-center">Add Scholarship</h2>
+                <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4 dark: bg-white pl-3 pr-3 ">
                     <div className="form-control">
                         <label className="label">Scholarship Name</label>
                         <input
                             type="text"
                             placeholder="Enter scholarship name"
-                            className="input input-bordered"
+                            className="input input-bordered dark: bg-white "
                             {...register('scholarshipName', { required: 'Scholarship Name is required' })}
                         />
                         {errors.scholarshipName && <p className="text-red-500">{errors.scholarshipName.message}</p>}
@@ -24,7 +25,7 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         <input
                             type="text"
                             placeholder="Enter university name"
-                            className="input input-bordered"
+                            className="input input-bordered dark: bg-white "
                             {...register('universityName', { required: 'University Name is required' })}
                         />
                         {errors.universityName && <p className="text-red-500">{errors.universityName.message}</p>}
@@ -32,13 +33,20 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
 
                     <div className="form-control">
                         <label className="label">University Image/Logo</label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            className="file-input file-input-bordered"
-                            {...register('universityImage', { required: 'University image is required' })}
-                        />
-                        {errors.universityImage && <p className="text-red-500">{errors.universityImage.message}</p>}
+
+                        <label className="w-full cursor-pointer bg-white dark:bg-white text-black dark:text-black border border-gray-300 rounded px-4 py-2 inline-block">
+                            Choose File
+                            <input
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                {...register('universityImage', { required: 'University image is required' })}
+                            />
+                        </label>
+
+                        {errors.universityImage && (
+                            <p className="text-red-500">{errors.universityImage.message}</p>
+                        )}
                     </div>
 
                     <div className="form-control">
@@ -46,18 +54,18 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         <input
                             type="text"
                             placeholder="Enter country"
-                            className="input input-bordered"
+                            className="input input-bordered dark: bg-white "
                             {...register('universityCountry', { required: 'Country is required' })}
                         />
                         {errors.universityCountry && <p className="text-red-500">{errors.universityCountry.message}</p>}
                     </div>
 
                     <div className="form-control">
-                        <label className="label">University City</label>
+                        <label className="label dark: bg-white ">University City</label>
                         <input
                             type="text"
                             placeholder="Enter city"
-                            className="input input-bordered"
+                            className="input input-bordered dark: bg-white "
                             {...register('universityCity', { required: 'City is required' })}
                         />
                         {errors.universityCity && <p className="text-red-500">{errors.universityCity.message}</p>}
@@ -68,7 +76,7 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         <input
                             type="number"
                             placeholder="Enter world rank"
-                            className="input input-bordered"
+                            className="input input-bordered dark: bg-white "
                             {...register('universityWorldRank', { required: 'World Rank is required' })}
                         />
                         {errors.universityWorldRank && <p className="text-red-500">{errors.universityWorldRank.message}</p>}
@@ -77,7 +85,7 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                     <div className="form-control">
                         <label className="label">Subject Category</label>
                         <select
-                            className="select select-bordered"
+                            className="select select-bordered dark: bg-white "
                             {...register('subjectCategory', { required: 'Subject Category is required' })}
                         >
                             <option value="">Select...</option>
@@ -89,9 +97,9 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                     </div>
 
                     <div className="form-control">
-                        <label className="label">Scholarship Category</label>
+                        <label className="label ">Scholarship Category</label>
                         <select
-                            className="select select-bordered"
+                            className="select select-bordered dark: bg-white"
                             {...register('scholarshipCategory', { required: 'Scholarship Category is required' })}
                         >
                             <option value="">Select...</option>
@@ -105,7 +113,7 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                     <div className="form-control">
                         <label className="label">Degree</label>
                         <select
-                            className="select select-bordered"
+                            className="select select-bordered dark: bg-white"
                             {...register('degree', { required: 'Degree is required' })}
                         >
                             <option value="">Select...</option>
@@ -121,7 +129,7 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         <input
                             type="number"
                             placeholder="Enter tuition fees"
-                            className="input input-bordered"
+                            className="input input-bordered dark: bg-white"
                             {...register('tuitionFees')}
                         />
                     </div>
@@ -131,7 +139,7 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         <input
                             type="number"
                             placeholder="Enter application fees"
-                            className="input input-bordered"
+                            className="input input-bordered dark: bg-white"
                             {...register('applicationFees', { required: 'Application Fees are required' })}
                         />
                     </div>
@@ -140,7 +148,7 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         <input
                             type="number"
                             placeholder="Enter service charge"
-                            className="input input-bordered"
+                            className="input input-bordered dark: bg-white"
                             {...register('serviceCharge', { required: 'Service Charge is required' })}
                         />
                         {errors.serviceCharge && <p className="text-red-500">{errors.serviceCharge.message}</p>}
@@ -151,7 +159,7 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         <label className="label">Application Deadline</label>
                         <input
                             type="date"
-                            className="input input-bordered"
+                            className="input input-bordered dark: bg-white"
                             {...register('applicationDeadline', { required: 'Application Deadline is required' })}
                         />
                         {errors.applicationDeadline && <p className="text-red-500">{errors.applicationDeadline.message}</p>}
@@ -163,7 +171,7 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            className="input input-bordered"
+                            className="input input-bordered dark: bg-white"
                             {...register('postedUserEmail', {
                                 required: 'Posted User Email is required',
                                 pattern: {
@@ -178,8 +186,8 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         <label className="label">Subject Name</label>
                         <input
                             type="text"
-                            placeholder="Enter subject name"
-                            className="input input-bordered"
+                            placeholder="Enter subject name "
+                            className="input input-bordered dark: bg-white"
                             {...register('subjectName', { required: 'Subject Name is required' })}
                         />
                         {errors.subjectName && <p className="text-red-500">{errors.subjectName.message}</p>}
@@ -187,13 +195,13 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
 
 
                     <div className="form-control  ">
-                        <label className="label cursor-pointer mt-6">
+                        <label className="label cursor-pointer mt-6 ">
                             <span className="label">Stipend Available</span>
                             <input
                                 type="checkbox"
-                                className="checkbox checkbox-md"
-                                {...register('stipendAvailable', { 
-                                    setValues: (value) => (value ? 'Available': 'Not Available')
+                                className="checkbox checkbox-md dark: bg-white"
+                                {...register('stipendAvailable', {
+                                    setValues: (value) => (value ? 'Available' : 'Not Available')
                                 })}
                             />
                         </label>
@@ -203,7 +211,7 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         <label className="label">Scholarship Description</label>
                         <textarea
                             placeholder="Enter scholarship description"
-                            className="textarea textarea-bordered w-full h-32"
+                            className="textarea textarea-bordered w-full h-32 dark: bg-white"
                             {...register('scholarshipDescription', { required: 'Scholarship Description is required' })}
                         />
                         {errors.scholarshipDescription && <p className="text-red-500">{errors.scholarshipDescription.message}</p>}
@@ -212,8 +220,8 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
 
 
                     {/* Submit Button */}
-                    <div className="form-control mt-6 md:col-span-2">
-                        <button type="submit" className="btn bg-slate-500" disabled={loading}>
+                    <div className="form-control mt-6 md:col-span-2 mb-3">
+                        <button type="submit" className="btn bg-slate-500 w-1/3 mx-auto text-white" disabled={loading}>
                             {loading ? (
                                 <TbFidgetSpinner className='animate-spin m-auto' />
                             ) : ('Add Scholarship')}

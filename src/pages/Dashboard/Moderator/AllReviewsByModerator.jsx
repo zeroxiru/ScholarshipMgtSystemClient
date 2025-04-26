@@ -70,13 +70,13 @@ const AllReviewsByModerator = () => {
   if(isLoading) return <LoadingSpinner></LoadingSpinner>
 
   return (
-    <div className="p-5">
-    <h1 className="text-2xl font-bold mb-5">All Reviews</h1>
+    <div className="p-5 dark:text-black dark: bg-white">
+    <h1 className="text-2xl font-bold mb-5 text-center">All Reviews</h1>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {reviews.map((review) => (
         <div
           key={review._id}
-          className="card w-full bg-base-100 shadow-md border border-gray-300"
+          className="card w-full bg-base-1 shadow-md border border-gray-300 dark: bg-white"
         >
           {/* Reviewer Image */}
           <figure className="p-4">
