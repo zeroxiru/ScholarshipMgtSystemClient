@@ -23,6 +23,8 @@ import ManageScholarship from "../pages/Dashboard/Moderator/ManageScholarship";
 import AllReviewsByModerator from "../pages/Dashboard/Moderator/AllReviewsByModerator";
 import Statistics from "../pages/Dashboard/Common/Statistics";
 import AllAppliedScholarship from "../pages/Dashboard/Moderator/AllAppliedScholarship";
+import SearchBar from "../components/Home/SearchBar";
+import SearchResults from "../pages/SearchResults/SearchResults";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +44,14 @@ export const router = createBrowserRouter([
         path: '/scholarship/:id',
         element: <ScholarshipDetails></ScholarshipDetails>,
       },
+      // {
+      //   path: "/",
+      //   element: <SearchBar/>
+      // },
+      {
+        path: "/search-results",
+        element: <SearchResults/>
+      }
 
     ]
   },

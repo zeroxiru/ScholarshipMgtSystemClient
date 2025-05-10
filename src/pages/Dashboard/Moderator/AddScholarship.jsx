@@ -7,66 +7,119 @@ import { Helmet } from 'react-helmet-async';
 import useAuth from '../../../hooks/useAuth';
 import AddScholarshipForm from '../../../components/Form/AddScholarshipForm';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 
 const AddScholarship = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
     const [loading, setLoading] = useState(false);
+    const [selectedFileName, setSelectedFileName]= useState(false)
     const axiosSecure = useAxiosSecure()
     const {user} = useAuth()
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
-    const onSubmit = async (data) => {
-        setLoading(true);
-        
-            // Upload image to ImgBB
-            const uploadedImageUrl = await imageUpload(data.universityImage[0]);
-            const moderator = { 
-                name: user?.displayName,
-                image: user?.photoURL,
-                email:user?.email
-            }
-
-            // Prepare scholarship data
-            const scholarshipData = {
-                scholarshipName: data.scholarshipName,
-                universityName: data.universityName,
-                universityImage: uploadedImageUrl,
-                universityCountry: data.universityCountry,
-                universityCity: data.universityCity,
-                universityWorldRank: parseInt(data.universityWorldRank),
-                subjectCategory: data.subjectCategory,
-                scholarshipCategory: data.scholarshipCategory,
-                degree: data.degree,
-                tuitionFees: parseFloat(data.tuitionFees) || null,
-                applicationFees: parseFloat(data.applicationFees),
-                serviceCharge: parseFloat(data.serviceCharge),
-                applicationDeadline: data.applicationDeadline,
-                postDate: new Date().toISOString(), // Current date and time
-                postedUserEmail: data.postedUserEmail,
-                moderator: moderator,
-                description: data.scholarshipDescription,
-                subjectName: data.subjectName,
-                isStipend :data.stipendAvailable
-            };
-            console.log(scholarshipData);
-            try {
-            // Send data to backend API
-            await axiosSecure.post(`/addScholarship`, scholarshipData);
-            toast.success("Data added successfully!")
-            navigate('/');
-        
-
-            // Reset form and show success message
-            reset();
-           // alert('Scholarship added successfully!');
-        } catch (error) {
-            console.error('Error adding scholarship:', error);
-            //alert('Failed to add scholarship. Please try again.');
-        } finally {
-            setLoading(false);
+    const handleFileChange = (e) => {
+        const file =  e.target.files[0];
+        if(file) { 
+            setValue('universityImage', file)
+            setSelectedFileName(file.name);
         }
-    };
+    }
+    
+        const {data:disciplineCategory = [],  isLoading} =  useQuery( { 
+            queryKey: ['discipline-categories'],
+            queryFn:  async () => {
+                const {data} = await axiosSecure('/discipline-category-titles')
+                return data;
+            },
+           
+        })
+        console.log(disciplineCategory) 
+
+       const onSubmit = async (data) => {
+        setLoading(true);
+        console.log(data);
+        const {
+            scholarshipName,
+            universityName,
+            universityCountry,
+            universityCity,
+            universityWorldRank,
+            applicationDeadline,
+            applicationFees,
+            degree,
+            disciplineCategory,
+            postedUserEmail,
+            scholarshipCategory,
+            scholarshipDescription,
+            serviceCharge,
+            stipendAvailable,
+            subjectCategory,
+            subjectName,
+            tuitionFees,
+            universityImage, // File comes here
+          } = data;
+        
+        try {
+          // Check if image is uploaded
+          if (!universityImage || universityImage.length === 0) {
+            toast.error('Please upload a university image!');
+            setLoading(false);
+            return;
+          }
+      
+          // Upload image to ImgBB
+          const uploadedImageUrl = await imageUpload(universityImage);
+          console.log(uploadedImageUrl);
+      
+          // Prepare moderator data
+          const moderator = { 
+            name: user?.displayName,
+            image: user?.photoURL,
+            email: user?.email
+          };
+      
+          // Prepare scholarship data
+          const scholarshipData = {
+            scholarshipName: scholarshipName,
+            universityName: universityName,
+            universityImage: uploadedImageUrl,
+            universityCountry: universityCountry,
+            universityCity: universityCity,
+            universityWorldRank: parseInt(universityWorldRank),
+            subjectCategory: subjectCategory,
+            scholarshipCategory: scholarshipCategory,
+            degree: degree,
+            tuitionFees: tuitionFees ? parseFloat(tuitionFees) : null,
+            applicationFees: applicationFees ? parseFloat(applicationFees) : null,
+            serviceCharge: serviceCharge ? parseFloat(serviceCharge) : null,
+            applicationDeadline: applicationDeadline,
+            postDate: new Date().toISOString(),
+            postedUserEmail: postedUserEmail,
+            moderator: moderator,
+            description: scholarshipDescription,
+            subjectName: subjectName,
+            isStipend: stipendAvailable,
+            disciplineCategory: disciplineCategory
+          };
+      
+          console.log('Final scholarship data:', scholarshipData);
+      
+          // Send data to backend
+          await axiosSecure.post('/addScholarship', scholarshipData);
+      
+          toast.success('Scholarship added successfully!');
+          reset();
+          navigate('/');
+      
+        } catch (error) {
+          console.error('Error adding scholarship:', error);
+          toast.error('Failed to add scholarship. Please try again.');
+        } finally {
+          setLoading(false);
+        }
+      };
+      
     return (
         <div>
             <Helmet>
@@ -78,6 +131,12 @@ const AddScholarship = () => {
             loading={loading}
             onSubmit={onSubmit}
             errors={errors}
+            disciplineCategory={disciplineCategory}
+            setValue={setValue}
+            setSelectedFileName={setSelectedFileName}
+            selectedFileName= {selectedFileName}
+            handleFileChange={handleFileChange}
+
             ></AddScholarshipForm>
         </div>
 

@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { TbFidgetSpinner } from 'react-icons/tb';
 import PropTypes from 'prop-types';
+import { useTheme } from '../theme-provider';
+import useAuth from '../../hooks/useAuth';
 
-const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors }) => {
+const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors,disciplineCategory, setValue, selectedFileName, setSelectedFileName, handleFileChange }) => {
+    const { theme } = useTheme();
+    const { user } = useAuth()
+    const [resolvedTheme, setResolvedTheme] = useState(theme);
+    useEffect(() => {
+        if (theme === "system") {
+          const updateSystemTheme = () => {
+            const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            setResolvedTheme(isDark ? "dark" : "light");
+          };
+          updateSystemTheme();
+          window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateSystemTheme);
+          return () => window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", updateSystemTheme);
+        } else {
+          setResolvedTheme(theme);
+        }
+      }, [theme]);
 
     return (
         <div>
@@ -31,23 +49,58 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         {errors.universityName && <p className="text-red-500">{errors.universityName.message}</p>}
                     </div>
 
-                    <div className="form-control">
+                    {/* <div className="form-control">
                         <label className="label">University Image/Logo</label>
 
-                        <label className="w-full cursor-pointer bg-white dark:bg-white text-black dark:text-black border border-gray-300 rounded px-4 py-2 inline-block">
+                        <label 
+                        htmlFor="universityImageUpload"
+                        className="w-full cursor-pointer bg-white dark:bg-white text-black dark:text-black border border-gray-300 rounded px-4 py-2 inline-block">
                             Choose File
                             <input
+                                id="universityImageUpload" 
                                 type="file"
                                 accept="image/*"
                                 className="hidden"
-                                {...register('universityImage', { required: 'University image is required' })}
+                                onChange={(e)=> { 
+                                    const file =  e.target.files[0];
+                                    if(file){ 
+                                        setValue('universityImage', file)
+                                    }
+                                }}
                             />
+                        
                         </label>
+                      
 
                         {errors.universityImage && (
                             <p className="text-red-500">{errors.universityImage.message}</p>
                         )}
-                    </div>
+                    </div> */}
+                    <div className="form-control">
+  <label className="label">University Image/Logo</label>
+   <div className='w-full bg-white text-black border border-gray-300 rounded px-4 py-2'>
+    <label htmlFor='image' className='cursor-pointer'>
+    Choose File
+    </label>
+    <input
+    id='image'
+    type="file"
+    accept='image/*'
+    className='opacity-0 absolute'
+    style={{ width: '0.1px', height: '0.1px' }}
+    onChange={handleFileChange}
+    />
+   </div>
+
+   {selectedFileName && (
+        <p className="text-gray-600 mt-2 px-3">{selectedFileName}</p>
+      )}
+  
+  {errors.universityImage && (
+    <p className="text-red-500">{errors.universityImage.message}</p>
+  )}
+</div>
+
 
                     <div className="form-control">
                         <label className="label">University Country</label>
@@ -90,6 +143,11 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         >
                             <option value="">Select...</option>
                             <option value="Agriculture">Agriculture</option>
+                            <option value="Business&Economics">Business and Economics</option>
+                            <option value="Arts&Humanities">Arts and Humanities</option>
+                            <option value="TeacherTraining">Teacher Training</option>
+                            <option value="Science&Mathematics">Science and Mathematics</option>
+                            <option value="Computer&SystemsSciences">Computer and Systems Sciences</option>
                             <option value="Engineering">Engineering</option>
                             <option value="Doctor">Doctor</option>
                         </select>
@@ -156,20 +214,25 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
 
                     {/* Application Deadline */}
                     <div className="form-control">
-                        <label className="label">Application Deadline</label>
-                        <input
-                            type="date"
-                            className="input input-bordered dark: bg-white"
-                            {...register('applicationDeadline', { required: 'Application Deadline is required' })}
-                        />
-                        {errors.applicationDeadline && <p className="text-red-500">{errors.applicationDeadline.message}</p>}
-                    </div>
+      <label className="label">Application Deadline</label>
+      <input
+        type="date"
+        className={`input input-bordered w-full border border-gray-300 rounded px-4 py-2 
+          ${resolvedTheme === "dark" ? "bg-gray-200 text-black" : "bg-white text-black"} 
+          cursor-pointer
+        `}
+        {...register('applicationDeadline', { required: 'Application Deadline is required' })}
+      />
+      {errors.applicationDeadline && <p className="text-red-500">{errors.applicationDeadline.message}</p>}
+    </div>
 
                     {/* Posted User Email */}
                     <div className="form-control">
                         <label className="label">Posted User Email</label>
                         <input
                             type="email"
+                            value={user?.email || ''}
+                            readOnly
                             placeholder="Enter your email"
                             className="input input-bordered dark: bg-white"
                             {...register('postedUserEmail', {
@@ -216,6 +279,19 @@ const AddScholarshipForm = ({ register, handleSubmit, loading, onSubmit, errors 
                         />
                         {errors.scholarshipDescription && <p className="text-red-500">{errors.scholarshipDescription.message}</p>}
                     </div>
+                    <div className="form-control">
+                        <label className="label">Discipline Category</label>
+                        <select
+                            className="select select-bordered dark: bg-white"
+                            {...register('disciplineCategory', { required: 'Discipline category is required' })}
+                        >
+                            <option value="">Select...</option>
+                             {disciplineCategory.map(category => (
+                            <option key={category._id} value={category._id}>{category.title}</option>
+                             ))}
+                        </select>
+                        {errors.degree && <p className="text-red-500">{errors.degree.message}</p>}
+                    </div>
 
 
 
@@ -240,6 +316,7 @@ AddScholarshipForm.propTypes = {
     loading: PropTypes.bool.isRequired,
     onSubmit: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
+    disciplineCategory: PropTypes.array.isRequired,
 
 }
 

@@ -26,3 +26,11 @@
     @apply bg-white dark:bg-gray-700 text-black dark:text-white border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600;
   }
   
+  
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0%);
+}
+
+html.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+}

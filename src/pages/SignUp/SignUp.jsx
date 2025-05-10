@@ -26,6 +26,7 @@ const SignUp = () => {
     try {
       // Upload image and get URL
       const photoUrl = await imageUpload(image[0]);
+      console.log(photoUrl);
 
       // User Registration
       const result = await createUser(email, password);
