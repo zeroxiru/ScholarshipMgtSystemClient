@@ -18,7 +18,7 @@ const BrowseByDiscipline = () => {
   }, []);
 
   return (
-    <section className="bg-gray-100 py-16 mt-5">
+    <section className="bg-gray-100 py-16 mt-8">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-extrabold text-center mb-8 text-gray-800">
           Browse By Discipline

@@ -7,6 +7,7 @@ import BrowseByDiscipline from '../../../components/Home/BrowseByDiscipline';
 import Info from '../../../components/Home/Info';
 import Reviews from '../../../components/Home/Reviews';
 import SearchBar from '../../../components/Home/SearchBar';
+import ScholarshipBridgeOfOpportunity from '../../../components/Home/ScholarshipBridgeOfOpportunity';
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
             <StepsComponent></StepsComponent>
             <Info></Info>
             <BrowseByDiscipline></BrowseByDiscipline>
+            <ScholarshipBridgeOfOpportunity/>
             <Reviews/>
 
         </div>

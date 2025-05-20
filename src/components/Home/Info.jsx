@@ -7,7 +7,7 @@ import { FaMedal, FaUserTie } from "react-icons/fa"
 
 const Info = () => {
     return (
-        <div className='bg-gray-100 dark:bg-gray-800 backdrop-blur-md my-12 mt-16 py-5'>
+        <div className='bg-gray-100 dark:bg-gray-800 backdrop-blur-md my-12 mt-8 py-5'>
             <div className='px-5 flex justify-center sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 place-items-center py-4 flex-wrap max-w-2xl lg:max-w-6xl mx-auto'>
             <motion.div initial={{ x: -200, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} transition={{ duration: 1.5 }} className="flex items-center border-r-ThirdColor  gap-1 w-fit">
                     <CiFaceSmile className="text-3xl text-black dark:text-white" />

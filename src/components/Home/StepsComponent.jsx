@@ -33,7 +33,7 @@ const StepsComponent = () => {
   ];
 
   return (
-    <div className=" py-10 mt-5 dark: bg-gray-100">
+    <div className=" py-10 mt-8 dark: bg-gray-100">
       <div className="container mx-auto px-4 ">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 ">
           {steps.map((step, index) => (
